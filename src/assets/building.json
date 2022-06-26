@@ -1,0 +1,107 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "miner",
+            "category": "extraction",
+            "markList": [
+                1,
+                2,
+                3
+            ],
+            "output": 1,
+            "haveQuality": true
+        },
+        {
+            "id": 2,
+            "name": "oil extractor",
+            "category": "extraction",
+            "output": 1,
+            "haveQuality": true
+        },
+        {
+            "id": 3,
+            "name": "water extractor",
+            "category": "extraction",
+            "output": 1,
+            "haveQuality": true
+        },
+        {
+            "id": 4,
+            "name": "resource well pressurizer",
+            "category": "extraction",
+            "output": 1,
+            "haveQuality": true
+        },
+        {
+            "id": 5,
+            "name": "resource well extractor",
+            "category": "extraction",
+            "output": 1,
+            "haveQuality": true
+        },
+        {
+            "id": 6,
+            "name": "smelter",
+            "category": "production",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 7,
+            "name": "foundry",
+            "category": "production",
+            "input": 2,
+            "output": 1
+        },
+        {
+            "id": 8,
+            "name": "constructor",
+            "category": "production",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 9,
+            "name": "assembler",
+            "category": "production",
+            "input": 2,
+            "output": 1
+        },
+        {
+            "id": 10,
+            "name": "manufacturer",
+            "category": "production",
+            "input": 4,
+            "output": 1
+        },
+        {
+            "id": 11,
+            "name": "refinery",
+            "category": "production",
+            "input": 2,
+            "output": 2
+        },
+        {
+            "id": 12,
+            "name": "packager",
+            "category": "production",
+            "input": 2,
+            "output": 2
+        },
+        {
+            "id": 13,
+            "name": "blender",
+            "category": "production",
+            "input": 2,
+            "output": 2
+        },
+        {
+            "id": 14,
+            "name": "particle accelerator",
+            "category": "production",
+            "input": 2,
+            "output": 2
+        }
+    ]
+}

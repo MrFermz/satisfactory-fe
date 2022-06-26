@@ -1,0 +1,141 @@
+<div class="container-fluid">
+  <button
+    [routerLink]="['/factory']"
+    pButton
+    label="Back"
+  ></button>
+  <button
+    (click)="addBuilding()"
+    pButton
+    class="p-button-success"
+    icon="pi pi-plus"
+  ></button>
+  <button
+    (click)="onSave()"
+    pButton
+    class="p-button-secondary"
+    label="Save"
+  ></button>
+  <button
+    (click)="onSave(true)"
+    pButton
+    class="p-button-warning"
+    label="Save and Exit"
+  ></button>
+
+  <div class="mt-5">
+    <div>
+      <label>Locked ?</label>
+      <p-inputSwitch [(ngModel)]="factoryLocked"></p-inputSwitch>
+    </div>
+    <div>
+      <label for="name">Name</label>
+      <input [(ngModel)]="factoryName" type="text" id="name" pInputText>
+    </div>
+    <div>
+      <label for="count">Count: {{factoryData.length}}</label>
+    </div>
+    <div>
+      <label for="count">Input: {{sumBy(factoryData, 'inputRate')}}</label>
+    </div>
+    <div>
+      <label for="count">Output: {{sumBy(factoryData, 'outputRate')}}</label>
+    </div>
+    <div>
+      <p-table [value]="factoryData" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Input</th>
+            <th>Output</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-factory let-i="rowIndex">
+          <tr>
+            <td>{{i+1}}</td>
+            <td>
+              <p-dropdown
+                (onChange)="onChangeBuilding($event, i)"
+                [(ngModel)]="factory.building"
+                [options]="buidingData"
+                [filter]="true"
+                [showClear]="true"
+                optionLabel="name"
+                filterBy="name"
+                placeholder="Select a building."
+              ></p-dropdown>
+              <div *ngIf="factory?.building?.markList && factory?.building?.markList.length > 0">
+                <p-inputNumber
+                  (onInput)="onInputMk($event, i)"
+                  [(ngModel)]="factory.mk"
+                  [showButtons]="true"
+                  [min]="factory.building.markList[0]"
+                  [max]="factory.building.markList[factory.building.markList.length - 1]"
+                  buttonLayout="horizontal"
+                  decrementButtonClass="p-button-danger"
+                  incrementButtonClass="p-button-success"
+                ></p-inputNumber>
+              </div>
+              <div *ngIf="factory?.building?.haveQuality">
+                <p-selectButton
+                  (onChange)="onChangeQuality($event, i)"
+                  [options]="qualityArr"
+                  [(ngModel)]="factory.quality"
+                  optionLabel="name"
+                  optionValue="value"
+                ></p-selectButton>
+              </div>
+            </td>
+            <td>
+              <div *ngIf="factory?.building?.input">
+                <div *ngFor="let input of numSequence(factory.building.input)">
+                  <p-dropdown
+                    [(ngModel)]="factory.inputId"
+                    [options]="itemDataFiltered(factory.building.id)"
+                    [filter]="true"
+                    [showClear]="true"
+                    optionLabel="name"
+                    filterBy="name"
+                    placeholder="Select an items."
+                  ></p-dropdown>
+                </div>
+              </div>
+              <div *ngIf="!factory?.building?.input">-</div>
+            </td>
+            <td>
+              <div *ngIf="factory?.building?.output">
+                <div *ngFor="let output of numSequence(factory.building.output)">
+                  <div *ngIf="factory?.building?.haveQuality && factory?.output">
+                    {{factory.outputRate}}/min
+                  </div>
+                  <p-dropdown
+                    (onChange)="onChangeOutput($event, i)"
+                    [(ngModel)]="factory.outputId"
+                    [options]="itemDataFiltered(factory.building.id)"
+                    [filter]="true"
+                    [showClear]="true"
+                    optionLabel="name"
+                    optionValue="id"
+                    filterBy="name"
+                    placeholder="Select an items."
+                  ></p-dropdown>
+                </div>
+              </div>
+              <div *ngIf="!factory?.building?.output">-</div>
+            </td>
+            <td>
+              <button
+                (click)="onDeleteBuilding(i)"
+                class="p-button-danger"
+                pButton
+                label="Delete"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
