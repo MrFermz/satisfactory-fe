@@ -19,7 +19,6 @@ export class FactoryListComponent implements OnInit {
     private router: Router
   ) {
     this.factoryData = $factory.getFactory()
-    console.log(`🦄🦄🦄: FactoryListComponent -> this.factoryData`, this.factoryData)
   }
 
   ngOnInit(): void {

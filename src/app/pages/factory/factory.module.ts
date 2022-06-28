@@ -30,7 +30,7 @@ import { InputSwitchModule } from 'primeng/inputswitch'
     InputTextModule,
     ButtonModule,
     SelectButtonModule,
-    InputSwitchModule,
+    InputSwitchModule
   ]
 })
 export class FactoryModule { }
