@@ -102,6 +102,163 @@
             "category": "production",
             "input": 2,
             "output": 2
+        },
+        {
+            "id": 15,
+            "name": "biomass burner",
+            "category": "generator"
+        },
+        {
+            "id": 16,
+            "name": "coal generator",
+            "category": "generator",
+            "input": 1
+        },
+        {
+            "id": 17,
+            "name": "fuel generator",
+            "category": "generator",
+            "input": 1
+        },
+        {
+            "id": 18,
+            "name": "geothermal generator",
+            "category": "generator"
+        },
+        {
+            "id": 19,
+            "name": "nuclear power plant",
+            "category": "generator",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 20,
+            "name": "power storage",
+            "category": "generator"
+        },
+        {
+            "id": 21,
+            "name": "The HUB",
+            "category": "special"
+        },
+        {
+            "id": 22,
+            "name": "MAM",
+            "category": "special"
+        },
+        {
+            "id": 23,
+            "name": "space elevator",
+            "category": "special",
+            "input": 6
+        },
+        {
+            "id": 24,
+            "name": "AWESOME Sink",
+            "category": "special",
+            "input": 1
+        },
+        {
+            "id": 25,
+            "name": "AWESOME Shop",
+            "category": "special"
+        },
+        {
+            "id": 26,
+            "name": "craft bench",
+            "category": "workstation"
+        },
+        {
+            "id": 27,
+            "name": "equipment workshop",
+            "category": "workstation"
+        },
+        {
+            "id": 28,
+            "name": "personal storage box",
+            "category": "storage"
+        },
+        {
+            "id": 29,
+            "name": "medical storage box",
+            "category": "storage"
+        },
+        {
+            "id": 30,
+            "name": "hazard storage box",
+            "category": "storage"
+        },
+        {
+            "id": 31,
+            "name": "storage container",
+            "category": "storage"
+        },
+        {
+            "id": 32,
+            "name": "storage container",
+            "category": "storage",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 33,
+            "name": "industrial storage container",
+            "category": "storage",
+            "input": 2,
+            "output": 2
+        },
+        {
+            "id": 34,
+            "name": "fluid buffer",
+            "category": "storage",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 35,
+            "name": "industrial fluid buffer",
+            "category": "storage",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 36,
+            "name": "truck station",
+            "category": "docking stations",
+            "input": 2,
+            "output": 1
+        },
+        {
+            "id": 37,
+            "name": "drone port",
+            "category": "docking stations",
+            "input": 1,
+            "output": 1
+        },
+        {
+            "id": 38,
+            "name": "freight platform",
+            "category": "docking stations",
+            "input": 2,
+            "output": 2
+        },
+        {
+            "id": 39,
+            "name": "fluid freight platform",
+            "category": "docking stations",
+            "input": 2,
+            "output": 2
+        },
+        {
+            "id": 40,
+            "name": "lookout tower",
+            "category": "docking stations"
+        },
+        {
+            "id": 41,
+            "name": "radar tower",
+            "category": "docking stations"
         }
     ]
 }
