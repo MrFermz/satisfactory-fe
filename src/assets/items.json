@@ -4,10 +4,11 @@
             "id": 1,
             "name": "limestone",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -17,49 +18,76 @@
             "id": 2,
             "name": "iron ore",
             "category": "Ores",
-            "produced": [
-                1
+            "inProduced": [
+                1,
+                6
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
+            },
+            "inputRate": {
+                "6": {
+                    "in": 30,
+                    "out": 30
+                }
             }
         },
         {
             "id": 3,
             "name": "copper ore",
             "category": "Ores",
-            "produced": [
-                1
+            "inProduced": [
+                1,
+                6
             ],
-            "rate": {
-                "impure": 30,
-                "normal": 60,
-                "pure": 120
+            "outProduced": [],
+            "outputRate": {
+                "1": {
+                    "impure": 30,
+                    "normal": 60,
+                    "pure": 120
+                }
+            },
+            "inputRate": {
+                "6": {
+                    "in": 30,
+                    "out": 30
+                }
             }
         },
         {
             "id": 4,
             "name": "caterium ore",
             "category": "Ores",
-            "produced": [
-                1
+            "inProduced": [
+                1,
+                6
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
+            },
+            "inputRate": {
+                "6": {
+                    "in": 45,
+                    "out": 15
+                }
             }
         },
         {
             "id": 5,
             "name": "coal",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -69,10 +97,11 @@
             "id": 6,
             "name": "raw quartz",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -82,10 +111,11 @@
             "id": 7,
             "name": "sulfur",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -95,10 +125,11 @@
             "id": 8,
             "name": "bauxite",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -108,10 +139,11 @@
             "id": 9,
             "name": "s.a.m. ore",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -121,10 +153,11 @@
             "id": 10,
             "name": "uranium",
             "category": "Ores",
-            "produced": [
+            "inProduced": [
                 1
             ],
-            "rate": {
+            "outProduced": [],
+            "outputRate": {
                 "impure": 30,
                 "normal": 60,
                 "pure": 120
@@ -134,31 +167,214 @@
             "id": 11,
             "name": "iron ingot",
             "category": "ingots",
-            "produced": []
+            "inProduced": [],
+            "outProduced": []
         },
         {
             "id": 12,
             "name": "copper ingot",
             "category": "ingots",
-            "produced": []
+            "inProduced": [],
+            "outProduced": []
         },
         {
             "id": 13,
             "name": "caterium ingot",
             "category": "ingots",
-            "produced": []
+            "inProduced": [],
+            "outProduced": []
         },
         {
             "id": 14,
             "name": "steel ingot",
             "category": "ingots",
-            "produced": []
+            "inProduced": [],
+            "outProduced": []
         },
         {
             "id": 15,
             "name": "aluminum ingot",
             "category": "ingots",
-            "produced": []
+            "inProduced": [],
+            "outProduced": [
+                7
+            ],
+            "outputRate": {
+                "7": {
+                    "out": 60
+                }
+            }
+        },
+        {
+            "id": 16,
+            "name": "concrete",
+            "category": "minerals",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 17,
+            "name": "quartz crystal",
+            "category": "minerals",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 18,
+            "name": "silica",
+            "category": "minerals",
+            "inProduced": [
+                7
+            ],
+            "outProduced": [],
+            "inputRate": {
+                "7": {
+                    "in": 75
+                }
+            }
+        },
+        {
+            "id": 19,
+            "name": "copper powder",
+            "category": "minerals",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 20,
+            "name": "polymer resin",
+            "category": "minerals",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 21,
+            "name": "petroleum coke",
+            "category": "minerals",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 22,
+            "name": "aluminum scrap",
+            "category": "minerals",
+            "inProduced": [
+                6,
+                7
+            ],
+            "outProduced": [],
+            "inputRate": {
+                "6": {
+                    "in": 60,
+                    "out": 30
+                },
+                "7": {
+                    "in": 90
+                }
+            }
+        },
+        {
+            "id": 23,
+            "name": "water",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": [
+                3,
+                5
+            ],
+            "outputRate": {
+                "3": 120,
+                "5": {
+                    "impure": 30,
+                    "normal": 60,
+                    "pure": 120
+                }
+            }
+        },
+        {
+            "id": 24,
+            "name": "crude oil",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": [
+                2,
+                5
+            ],
+            "outputRate": {
+                "2": {
+                    "impure": 60,
+                    "normal": 120,
+                    "pure": 240
+                },
+                "5": {
+                    "impure": 30,
+                    "normal": 60,
+                    "pure": 120
+                }
+            }
+        },
+        {
+            "id": 25,
+            "name": "heavy oil residue",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 26,
+            "name": "fuel",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 27,
+            "name": "liquid biofuel",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 28,
+            "name": "turbofuel",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 29,
+            "name": "alumina solution",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 30,
+            "name": "sulfuric acid",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 31,
+            "name": "nitric acid",
+            "category": "liquids",
+            "inProduced": [],
+            "outProduced": []
+        },
+        {
+            "id": 32,
+            "name": "nitrogen gas",
+            "category": "gas",
+            "inProduced": [],
+            "outProduced": [
+                5
+            ],
+            "outputRate": {
+                "impure": 30,
+                "normal": 60,
+                "pure": 120
+            }
         }
     ]
 }

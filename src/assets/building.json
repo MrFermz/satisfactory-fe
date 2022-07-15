@@ -24,7 +24,7 @@
             "name": "water extractor",
             "category": "extraction",
             "output": 1,
-            "haveQuality": true
+            "haveQuality": false
         },
         {
             "id": 4,

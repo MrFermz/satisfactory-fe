@@ -9,34 +9,49 @@
     <p-table [value]="factoryData" styleClass="p-datatable-sm">
       <ng-template pTemplate="header">
         <tr>
-          <th>#</th>
+          <th [width]="50">#</th>
           <th>Name</th>
+          <th>Input</th>
           <th>Output</th>
-          <th>Action</th>
+          <th class="text-center" [width]="200">Action</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-factory let-i="rowIndex">
         <tr>
           <td>{{i+1}}</td>
           <td>{{factory.name}}</td>
+          <td>{{sumBy(factory.data, 'inputRate')}}</td>
           <td>{{sumBy(factory.data, 'outputRate')}}</td>
           <td>
-            <button
-              (click)="onAction('/factory/edit', factory.id)"
-              class="p-button-secondary"
-              pButton
-              label="Edit"
-            ></button>
-            <button
-              (click)="onDelete(factory.id)"
-              [disabled]="factory.locked"
-              class="p-button-danger"
-              pButton
-              label="Delete"
-            ></button>
+            <div class="d-flex justify-content-evenly">
+              <button
+                (click)="onAction('/factory/edit', factory.id)"
+                class="p-button-warning"
+                icon="pi pi-pencil"
+                pButton
+                title="edit"
+              ></button>
+              <button
+                (click)="onCloneConfirm(factory.id)"
+                class="p-button-primary"
+                icon="pi pi-clone"
+                pButton
+                title="clone"
+              ></button>
+              <button
+                (click)="onDeleteConfirm(factory.id)"
+                [disabled]="factory.locked"
+                class="p-button-danger"
+                icon="pi pi-trash"
+                pButton
+                title="delete"
+              ></button>
+            </div>
           </td>
         </tr>
       </ng-template>
     </p-table>
   </div>
 </div>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

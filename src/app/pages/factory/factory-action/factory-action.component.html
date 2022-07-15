@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="factory container-fluid">
   <button
     [routerLink]="['/factory']"
     pButton
@@ -33,13 +33,13 @@
       <input [(ngModel)]="factoryName" type="text" id="name" pInputText>
     </div>
     <div>
-      <label for="count">Count: {{factoryData.length}}</label>
+      <label>Count: {{factoryData.length}}</label>
     </div>
     <div>
-      <label for="count">Input: {{sumBy(factoryData, 'inputRate')}}</label>
+      <label>Input: {{sumBy(factoryData, 'inputRate')}}</label>
     </div>
     <div>
-      <label for="count">Output: {{sumBy(factoryData, 'outputRate')}}</label>
+      <label>Output: {{sumBy(factoryData, 'outputRate')}}</label>
     </div>
     <div>
       <p-table [value]="factoryData" styleClass="p-datatable-sm">
@@ -47,8 +47,10 @@
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Input</th>
-            <th>Output</th>
+            <th [width]="100">Mk.</th>
+            <th>Purity</th>
+            <th [width]="200">Input</th>
+            <th [width]="200">Output</th>
             <th>Action</th>
           </tr>
         </ng-template>
@@ -66,6 +68,8 @@
                 filterBy="name"
                 placeholder="Select a building."
               ></p-dropdown>
+            </td>
+            <td>
               <div *ngIf="factory?.building?.markList && factory?.building?.markList.length > 0">
                 <p-inputNumber
                   (onInput)="onInputMk($event, i)"
@@ -76,8 +80,13 @@
                   buttonLayout="horizontal"
                   decrementButtonClass="p-button-danger"
                   incrementButtonClass="p-button-success"
+                  decrementButtonIcon="pi pi-minus"
+                  incrementButtonIcon="pi pi-plus"
                 ></p-inputNumber>
               </div>
+              <div *ngIf="!factory?.building?.markList || factory?.building?.markList.length === 0">-</div>
+            </td>
+            <td>
               <div *ngIf="factory?.building?.haveQuality">
                 <p-selectButton
                   (onChange)="onChangeQuality($event, i)"
@@ -87,13 +96,40 @@
                   optionValue="value"
                 ></p-selectButton>
               </div>
+              <div *ngIf="!factory?.building?.haveQuality">-</div>
             </td>
             <td>
               <div *ngIf="factory?.building?.input">
-                <div *ngFor="let input of numSequence(factory.building.input)">
+                <div *ngFor="let input of numSequence(factory.building.input); let j = index">
+                  <div class="p-inputgroup" *ngIf="factory['input'+j]?.inputRate">
+                    <button
+                      *ngIf="factory['input'+j].inputRate !== factory['input'+j].originalInputRate"
+                      (click)="onResetInputRate(i)"
+                      type="button"
+                      class="p-button-primary"
+                      pButton pRipple
+                      icon="pi pi-refresh"
+                    ></button>
+                    <p-inputNumber
+                      [(ngModel)]="factory['input'+j].inputRate"
+                    ></p-inputNumber>
+                    <span class="p-inputgroup-addon">/min</span>
+                  </div>
                   <p-dropdown
-                    [(ngModel)]="factory.inputId"
-                    [options]="itemDataFiltered(factory.building.id)"
+                    *ngIf="factory['input'+j]?.inputId"
+                    (onChange)="onChangeInput($event, i, j)"
+                    [(ngModel)]="factory['input'+j].inputId"
+                    [options]="itemDataFiltered(factory.building.id, 'inProduced')"
+                    [filter]="true"
+                    [showClear]="true"
+                    optionLabel="name"
+                    filterBy="name"
+                    placeholder="Select an items."
+                  ></p-dropdown>
+                  <p-dropdown
+                    *ngIf="!factory['input'+j]?.inputId"
+                    (onChange)="onChangeInput($event, i, j)"
+                    [options]="itemDataFiltered(factory.building.id, 'inProduced')"
                     [filter]="true"
                     [showClear]="true"
                     optionLabel="name"
@@ -107,13 +143,24 @@
             <td>
               <div *ngIf="factory?.building?.output">
                 <div *ngFor="let output of numSequence(factory.building.output)">
-                  <div *ngIf="factory?.building?.haveQuality && factory?.output">
-                    {{factory.outputRate}}/min
+                  <div class="p-inputgroup" *ngIf="factory.outputRate">
+                    <button
+                      *ngIf="factory.outputRate !== factory.originalOutputRate"
+                      (click)="onResetOutputRate(i)"
+                      type="button"
+                      class="p-button-primary"
+                      pButton pRipple
+                      icon="pi pi-refresh"
+                    ></button>
+                    <p-inputNumber
+                      [(ngModel)]="factory.outputRate"
+                    ></p-inputNumber>
+                    <span class="p-inputgroup-addon">/min</span>
                   </div>
                   <p-dropdown
                     (onChange)="onChangeOutput($event, i)"
                     [(ngModel)]="factory.outputId"
-                    [options]="itemDataFiltered(factory.building.id)"
+                    [options]="itemDataFiltered(factory.building.id, 'outProduced')"
                     [filter]="true"
                     [showClear]="true"
                     optionLabel="name"
@@ -127,10 +174,16 @@
             </td>
             <td>
               <button
-                (click)="onDeleteBuilding(i)"
-                class="p-button-danger"
+                (click)="onCloneBuilding(i)"
+                class="p-button-primary"
+                icon="pi pi-clone"
                 pButton
-                label="Delete"
+              ></button>
+              <button
+                (click)="onDeleteBuildingConfirm($event, i)"
+                class="p-button-danger"
+                icon="pi pi-trash"
+                pButton
               ></button>
             </td>
           </tr>
@@ -139,3 +192,5 @@
     </div>
   </div>
 </div>
+
+<p-confirmPopup></p-confirmPopup>

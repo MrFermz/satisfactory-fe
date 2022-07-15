@@ -13,6 +13,8 @@ import { InputTextModule } from 'primeng/inputtext'
 import { ButtonModule } from 'primeng/button'
 import { SelectButtonModule } from 'primeng/selectbutton'
 import { InputSwitchModule } from 'primeng/inputswitch'
+import { ConfirmDialogModule } from 'primeng/confirmdialog'
+import { ConfirmPopupModule } from 'primeng/confirmpopup'
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { InputSwitchModule } from 'primeng/inputswitch'
     InputTextModule,
     ButtonModule,
     SelectButtonModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ConfirmDialogModule,
+    ConfirmPopupModule
   ]
 })
 export class FactoryModule { }
